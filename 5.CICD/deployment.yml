@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: studentx-deployment
-  namespace: studentx
+  name: student05-deployment
+  namespace: student05
 spec:
   selector:
     matchLabels:
-      app: studentx
+      app: student05
   template:
     metadata:
       labels:
-        app: studentx
+        app: student05
     spec:
       containers:
-      - name: studentx
-        image: registry.tanzu.dk/ops2devops/studentx:master
+      - name: student05
+        image: registry.tanzu.dk/ops2devops/student05:master
         imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: nginx-service
-  namespace: studentx
+  namespace: student05
 spec:
   type: NodePort
   selector:
-    app: studentx
+    app: student05
   ports:
   - port: 80
     targetPort: 80
-    nodePort: 30010 # Remember to change to student number.
+    nodePort: 30015 # Remember to change to student number.
 
